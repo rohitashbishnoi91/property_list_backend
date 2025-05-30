@@ -36,6 +36,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/property_
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
+// Root route for health check or welcome message
+app.get('/', (req, res) => {
+    res.send('Property Listing System API is running.');
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
